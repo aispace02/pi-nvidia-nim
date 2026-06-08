@@ -26,6 +26,7 @@
  * - GLM-5/4.7:     `chat_template_kwargs: { enable_thinking: true, clear_thinking: false }`
  * - Kimi K2.5:     `chat_template_kwargs: { thinking: true }` (also accepts reasoning_effort)
  * - Qwen3:         `chat_template_kwargs: { enable_thinking: true }`
+ * - Gemma 4:       `chat_template_kwargs: { enable_thinking: true }`
  *
  * NIM only accepts selected `reasoning_effort` values. The extension maps pi's
  * provider-agnostic levels to the values each NIM model accepts.
@@ -176,6 +177,11 @@ const THINKING_CONFIGS: Record<string, ThinkingConfig> = {
 	},
 	// Mistral reasoning
 	"mistralai/magistral-small-2506": {
+		enableKwargs: { enable_thinking: true },
+		disableKwargs: { enable_thinking: false },
+	},
+	// Google Gemma reasoning
+	"google/gemma-4-31b-it": {
 		enableKwargs: { enable_thinking: true },
 		disableKwargs: { enable_thinking: false },
 	},
@@ -330,6 +336,7 @@ const CONTEXT_WINDOWS: Record<string, number> = {
 	"google/gemma-3-4b-it": 131072,
 	"google/gemma-3n-e2b-it": 131072,
 	"google/gemma-3n-e4b-it": 131072,
+	"google/gemma-4-31b-it": 131072,
 	"google/codegemma-1.1-7b": 8192,
 	// NVIDIA
 	"nvidia/llama-3.1-nemotron-ultra-253b-v1": 131072,
@@ -406,6 +413,7 @@ const MAX_TOKENS: Record<string, number> = {
 	"openai/gpt-oss-20b": 16384,
 	"mistralai/mistral-large-3-675b-instruct-2512": 16384,
 	"mistralai/devstral-2-123b-instruct-2512": 32768,
+	"google/gemma-4-31b-it": 16384,
 };
 
 // =============================================================================
@@ -463,6 +471,8 @@ const FEATURED_MODELS = [
 	"microsoft/phi-4-mini-instruct",
 	// IBM
 	"ibm/granite-3.3-8b-instruct",
+	// Google Gemma
+	"google/gemma-4-31b-it",
 ];
 
 // =============================================================================
